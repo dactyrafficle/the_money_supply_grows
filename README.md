@@ -1,6 +1,8 @@
 # the_money_supply_grows
 the money supply grows
 
+https://dactyrafficle.github.io/the_money_supply_grows/
+
 im trying to understand some basic things about the money supply
 
 when i studied economics, i was very confused about how the money supply grew. and whenever i asked, everyone said 'the central bank does open market operations (omo) and buys bonds on the open market'.
