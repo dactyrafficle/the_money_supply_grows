@@ -7,45 +7,32 @@
   <title> · · · </title>
   <link rel="stylesheet" href="./includes/a.css">
   <link rel="icon" href="./includes/a.png">
-  
+
   <script src='./includes/_a.js'></script>
+
+  <script src='./_Accounting/Record.js'></script>
+  <script src='./_Accounting/Entry.js'></script>
+  <script src='./_Accounting/Transaction.js'></script>
+
+  <script src='./_Economy/Economy.js'></script>
+  <script src='./_Economy/Economy_method_001_consumer_finds_gold.js'></script>
+  <script src='./_Economy/Economy_method_002_central_bank_issues_currency.js'></script>
+  <script src='./_Economy/Economy_method_003.js'></script>
+  <script src='./_Economy/Economy_method_004.js'></script>
+  <script src='./_Economy/Economy_method_005_omo.js'></script>
+  <script src='./_Economy/Economy_method_006.js'></script>
+
+  <script src='./RETURN_SUMMARY_TABLE.js'></script>
+
+  <script src='./return_general_journal_as_table.js'></script>
+  <script src='./return_trial_balance_for_each_agent_as_html_table.js'></script>
+
+  <script src='./setup.js'></script>
 </head>
-<script src='./_Accounting/Record.js'></script>
-<script src='./_Accounting/Entry.js'></script>
-<script src='./_Accounting/Transaction.js'></script>
-
-<script src='./_Economy/Economy.js'></script>
-<script src='./_Economy/Economy_method_001_consumer_finds_gold.js'></script>
-<script src='./_Economy/Economy_method_002_central_bank_issues_currency.js'></script>
-<script src='./_Economy/Economy_method_003.js'></script>
-<script src='./_Economy/Economy_method_004.js'></script>
-<script src='./_Economy/Economy_method_005_omo.js'></script>
-<script src='./_Economy/Economy_method_006.js'></script>
-
-
-
-<script src='./RETURN_SUMMARY_TABLE.js'></script>
-
-<script src='./return_general_journal_as_table.js'></script>
-<script src='./return_trial_balance_for_each_agent_as_html_table.js'></script>
-
-
-<script src='./setup.js'></script>
-
-
-
 <div class='section border margin padding' id='main_container'> <!-- opening L0 -->
 
   <div class='mytables' id='summary_table_container'></div>
 
-  <!--
-  <div style='display: flex; flex-direction: row; border: 1px solid #58d;'>
-    <div class='border margin padding'> desc </div>
-    <div class='border margin padding'> entries </div>
-    <div class='border margin padding' style='flex-grow:1;' > trial balance </div>
-  </div>
-  -->
-  
   <div class='section border margin padding'>
       <div class='box' id='trial_balance_container'></div>
     <div class='box' id='general_journal_container'></div>
