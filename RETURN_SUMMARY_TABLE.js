@@ -7,7 +7,7 @@ Economy.prototype.RETURN_SUMMARY_TABLE = function() {
     for (let i = 0; i < this.DATA.TRANSACTIONS.length; i++) {
       
       let transaction = this.DATA.TRANSACTIONS[i];
-      let tr = return_row();
+      let tr = RETURN_TR();
       tbody.appendChild(tr);
       
       // THE DESCRIPTION

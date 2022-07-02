@@ -12,19 +12,32 @@ let summary_table_container;
     
     e1 = new Economy();
     
+    // STARTING THE TRANSACTIONS
+    
     // INITIALIZING
     e1.consumer_finds_gold({
       "x":5000,
-      "desc":"<p> initialize the economy </p><p> the consumers havings things that everyone agrees have value </p><p> what if Dan borrows a chicken from Steve ?"
+      "desc":"<p> initializing the economy </p><p> the consumers havings things that everyone agrees have value </p>"
     });
-    e1.central_bank_issues_currency_for_gold(4950);
-    e1.consumer_deposits_currency_in_a_comercial_bank(4250);
+    
+    e1.central_bank_issues_currency_for_gold({
+      "x":4950,
+      "desc":"<p> the central bank is born </p><p> it issues currency, giving it to consumers in exchange for gold </p>"
+    });
+    
+    e1.consumer_deposits_currency_in_a_comercial_bank({
+      "x":4250,
+      "desc":"<p> someone opens a commercial bank </p><p> consumers use it to deposit some of their currency </p><p> the bank accept currency, and records the deposits </p>"
+    });
     
     // THE TRIO
     e1.government_issues_government_bonds(1475);
     e1.central_bank_buys_bonds(1324);
     e1.consumer_borrows_from_commercial_bank(7000);
     
+    // END OF THE TRANSACTIONS
+    
+    // SUMMARIES
     summary_table_container.appendChild(e1.RETURN_SUMMARY_TABLE());
     
 
@@ -35,27 +48,3 @@ let summary_table_container;
 
 })(); // closing anon
 
-function return_row() {
-  let tr = document.createElement('tr');
-  return tr;
-};
-
-function return_cell(obj) {
-  let td = document.createElement('td');
-  
-  if (obj.hasOwnProperty('colSpan')) {
-    td.colSpan = obj.colSpan;
-  }
-  
-  if (obj.hasOwnProperty('innerHTML')) {
-    td.innerHTML = obj.innerHTML;
-  }
-  
-  return td;
-};
-
-function return_div(x) {
-  let div = document.createElement('div');
-  div.innerHTML = x;
-  return div;
-};
