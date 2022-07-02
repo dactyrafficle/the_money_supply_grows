@@ -1,4 +1,4 @@
-Economy.prototype.return_trial_balance_for_each_agent_as_html_table = function() {
+Economy.prototype.return_trial_balance_for_each_agent_as_html_table = function(n) {
 
   // go over all the records
   // all agents, all account_classes, all account_names
@@ -6,6 +6,10 @@ Economy.prototype.return_trial_balance_for_each_agent_as_html_table = function()
   let output = {};
 
   for (let y = 0; y < this.DATA.RECORDS.length; y++) {
+    
+    if (this.DATA.RECORDS[y].transaction_no > (n+1)) {
+      break;
+    }
     
     let record = this.DATA.RECORDS[y];
     let agent = record.agent;

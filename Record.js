@@ -37,11 +37,12 @@ function Entry(obj) {
 function Transaction(obj) {
   
   this.transaction_no = obj.transaction_no;
+  this.desc = (obj.desc || null);
   this.entries = obj.entries;
 
 };
 
-Transaction.prototype.SHOW_ENTRIES = function() {
+Transaction.prototype.RETURN_ENTRIES_IN_THE_TRANSACTION = function() {
   
   let container = document.createElement('div');
   

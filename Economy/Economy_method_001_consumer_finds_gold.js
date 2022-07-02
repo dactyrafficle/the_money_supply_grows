@@ -1,4 +1,5 @@
-Economy.prototype.consumer_finds_gold = function(x) {
+
+Economy.prototype.consumer_finds_gold = function(obj) {
 
   // a transaction contains 1 or more entries
   // an entry contains 2 or more records (for the same agent)
@@ -6,16 +7,11 @@ Economy.prototype.consumer_finds_gold = function(x) {
   let transaction_id = '001';
   let desc = 'consumers find gold and establish its value';
   
-  /*
-  
-  this.DATA.TRANSACTIONS.push(new Transaction({
-    'transaction_no':(this.DATA.TRANSACTIONS.length + 1),
-    'entries':[
-      new Entry()
-    ]
-  }));
-  
-  */
+  if (obj.hasOwnProperty('desc')) {
+    desc = obj.desc;
+  }
+
+  let x = obj.x;
   
   let agent = 'consumers';
   
@@ -60,6 +56,7 @@ Economy.prototype.consumer_finds_gold = function(x) {
   // THE TRANSACTION SUMMARY
   let transaction_1 = new Transaction({
     'transaction_no':(this.DATA.TRANSACTIONS.length + 1),
+    'desc':desc,
     'entries':[entry_1]
   });
   this.DATA.TRANSACTIONS.push(transaction_1);
