@@ -114,41 +114,10 @@ Economy.prototype.return_trial_balance_for_each_agent_as_html_table = function(n
           
           let account_name = key;
           let amount = assets[account_name];
-          
-          let div = document.createElement('div');
-          div.style.width = div_width;
-          div.style.padding = '3px';
-          div.style.textAlign = 'right';
-          div.innerHTML = amount;
-          
-          if (account_name === 'gold') {
-            div.style.backgroundColor = '#fc09';
-          }
-          if (account_name === 'currency') {
-            div.style.backgroundColor = '#58d9';
-          }
-
-          if (account_name === 'deposits, consumers') {
-            div.style.backgroundColor = '#2d865944';
-          }
-          if (account_name === 'deposits, consumer loans') {
-            div.style.backgroundColor = '#2d865944';
-          }
-          if (account_name === 'deposits, government') {
-            div.style.backgroundColor = '#2d865977';
-          }
-          if (account_name === 'deposits, central bank') {
-            div.style.backgroundColor = '#2d8659aa';
-          }
-          if (account_name === 'reserves') {
-            div.style.backgroundColor = '#f007';
-          }
-          if (account_name === 'government bonds') {
-            div.style.backgroundColor = '#ccb3ffaa';
-          }
-          if (account_name === 'loans, consumers') {
-            div.style.backgroundColor = '#2d865944';
-          }
+          let div = RETURN_ACCOUNT_BALANCE_DIV({
+            'account_name':account_name,
+            'amount':amount
+          });
           col_a.appendChild(div);
           
         });
@@ -162,43 +131,11 @@ Economy.prototype.return_trial_balance_for_each_agent_as_html_table = function(n
           
           let account_name = key;
           let amount = liabilities[account_name];
-          
-          let div = document.createElement('div');
-          div.style.width = div_width;
-          div.style.padding = '3px';
-          div.style.textAlign = 'right';
-          div.innerHTML = amount;
-          
-          if (account_name === 'gold') {
-            div.style.backgroundColor = '#fc09';
-          }
-          if (account_name === 'currency') {
-            div.style.backgroundColor = '#58d9';
-          }
-          if (account_name === 'deposits') {
-            div.style.backgroundColor = '#5c55';
-          }
-          if (account_name === 'deposits, consumers') {
-            div.style.backgroundColor = '#2d865944';
-          }
-          if (account_name === 'deposits, consumer loans') {
-            div.style.backgroundColor = '#2d865944';
-          }
-          if (account_name === 'deposits, government') {
-            div.style.backgroundColor = '#2d865977';
-          }
-          if (account_name === 'deposits, central bank') {
-            div.style.backgroundColor = '#2d8659aa';
-          }
-          if (account_name === 'reserves') {
-            div.style.backgroundColor = '#f007';
-          }
-          if (account_name === 'government bonds') {
-            div.style.backgroundColor = '#ccb3ffaa';
-          }
-          col_b.appendChild(div);
-          
-          
+          let div = RETURN_ACCOUNT_BALANCE_DIV({
+            'account_name':account_name,
+            'amount':amount
+          });
+          col_b.appendChild(div); 
           
         });
       }
@@ -211,31 +148,61 @@ Economy.prototype.return_trial_balance_for_each_agent_as_html_table = function(n
           
           let account_name = key;
           let amount = equity[account_name];
-          
-          let div = document.createElement('div');
-          div.style.width = div_width;
-          div.style.padding = '3px';
-          div.style.textAlign = 'right';
-          div.innerHTML = amount;
-          
-          if (account_name === 'reserves') {
-            div.style.backgroundColor = '#f007';
-          }
-          
+          let div = RETURN_ACCOUNT_BALANCE_DIV({
+            'account_name':account_name,
+            'amount':amount
+          });
           col_b.appendChild(div);
-          
-          
           
         });
       }
-      
-      
+       
     }
-    
 
-
-    
   }
 
   return container;
+};
+
+function RETURN_ACCOUNT_BALANCE_DIV(obj) {
+  
+  // obj.account_name
+  // obj.amount
+  
+  let div = document.createElement('div');
+  div.style.width = '70px';
+  div.style.padding = '3px';
+  div.style.textAlign = 'right';
+  
+  div.innerHTML = (obj.amount.toLocaleString() || null);
+
+  if (obj.account_name === 'gold') {
+    div.style.backgroundColor = '#fc09';
+  }
+  if (obj.account_name === 'currency') {
+    div.style.backgroundColor = '#58d9';
+  }
+  if (obj.account_name === 'deposits, consumers') {
+    div.style.backgroundColor = '#2d865944';
+  }
+  if (obj.account_name === 'deposits, consumer loans') {
+    div.style.backgroundColor = '#2d865944';
+  }
+  if (obj.account_name === 'deposits, government') {
+    div.style.backgroundColor = '#2d865977';
+  }
+  if (obj.account_name === 'deposits, central bank') {
+    div.style.backgroundColor = '#2d8659aa';
+  }
+  if (obj.account_name === 'reserves') {
+    div.style.backgroundColor = '#f007';
+  }
+  if (obj.account_name === 'government bonds') {
+    div.style.backgroundColor = '#ccb3ffaa';
+  }
+  if (obj.account_name === 'loans, consumers') {
+    div.style.backgroundColor = '#2d865944';
+  }
+  
+  return div;
 };
