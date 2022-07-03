@@ -19,7 +19,7 @@ Economy.prototype.consumer_deposits_currency_in_a_comercial_bank = function(obj)
     'agent':agent_1,
     'record_type':'DR',
     'account_class':'assets',
-    'account_name':'deposits',
+    'account_name':'deposits, consumers',
     'amount':x
   });
   this.DATA.RECORDS.push(record_1);
@@ -75,7 +75,7 @@ Economy.prototype.consumer_deposits_currency_in_a_comercial_bank = function(obj)
     'agent':agent_2,
     'record_type':'CR',
     'account_class':'liabilities',
-    'account_name':'deposits',
+    'account_name':'deposits, consumers',
     'amount':x
   });
   this.DATA.RECORDS.push(record_4);

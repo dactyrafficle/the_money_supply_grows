@@ -127,11 +127,27 @@ Economy.prototype.return_trial_balance_for_each_agent_as_html_table = function(n
           if (account_name === 'currency') {
             div.style.backgroundColor = '#58d9';
           }
-          if (account_name === 'deposits') {
-            div.style.backgroundColor = '#5c59';
+
+          if (account_name === 'deposits, consumers') {
+            div.style.backgroundColor = '#2d865944';
+          }
+          if (account_name === 'deposits, consumer loans') {
+            div.style.backgroundColor = '#2d865944';
+          }
+          if (account_name === 'deposits, government') {
+            div.style.backgroundColor = '#2d865977';
+          }
+          if (account_name === 'deposits, central bank') {
+            div.style.backgroundColor = '#2d8659aa';
           }
           if (account_name === 'reserves') {
             div.style.backgroundColor = '#f007';
+          }
+          if (account_name === 'government bonds') {
+            div.style.backgroundColor = '#ccb3ffaa';
+          }
+          if (account_name === 'loans, consumers') {
+            div.style.backgroundColor = '#2d865944';
           }
           col_a.appendChild(div);
           
@@ -160,12 +176,26 @@ Economy.prototype.return_trial_balance_for_each_agent_as_html_table = function(n
             div.style.backgroundColor = '#58d9';
           }
           if (account_name === 'deposits') {
-            div.style.backgroundColor = '#5c59';
+            div.style.backgroundColor = '#5c55';
+          }
+          if (account_name === 'deposits, consumers') {
+            div.style.backgroundColor = '#2d865944';
+          }
+          if (account_name === 'deposits, consumer loans') {
+            div.style.backgroundColor = '#2d865944';
+          }
+          if (account_name === 'deposits, government') {
+            div.style.backgroundColor = '#2d865977';
+          }
+          if (account_name === 'deposits, central bank') {
+            div.style.backgroundColor = '#2d8659aa';
           }
           if (account_name === 'reserves') {
             div.style.backgroundColor = '#f007';
           }
-          
+          if (account_name === 'government bonds') {
+            div.style.backgroundColor = '#ccb3ffaa';
+          }
           col_b.appendChild(div);
           
           

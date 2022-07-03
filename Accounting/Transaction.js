@@ -20,6 +20,7 @@ Transaction.prototype.RETURN_ENTRIES_IN_THE_TRANSACTION = function() {
     // MAKE A TABLE, APPEND IT TO THE CONTAINER
     let table = document.createElement('table');
     table.classList.add('mytables');
+    table.classList.add('margin');
     container.appendChild(table);
     
     // THE HEADER CONTAINS THE AGENT NAME

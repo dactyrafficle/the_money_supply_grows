@@ -1,95 +1,108 @@
-Economy.prototype.government_issues_government_bonds = function(x) {
+Economy.prototype.government_issues_government_bonds = function(obj) {
+
+  let x = obj.x; // THE MINIMUM THIS FUNCTION ACCEPTS AS A PARAMETER
   
   let transaction_id = "GIB";
   let transaction_desc = 'gov issues gov bonds';
 
-  // THE FIRST ENTRY
-  
+  // ENTRY 2
   let agent_1 = 'government';
-
-  let record_1 = new Record({
-    'year':this.current_year,
-    'transaction_id':transaction_id,
-    'transaction_no':(this.DATA.TRANSACTIONS.length + 1),
-    'entry_no':(this.DATA.ENTRIES.length + 1),
-    'record_no':(this.DATA.RECORDS.length + 1),
-    'agent':agent_1,
-    'record_type':'DR',
-    'account_class':'assets',
-    'account_name':'deposits',
-    'amount':x
-  });
-  this.DATA.RECORDS.push(record_1);
-
-  let record_2 = new Record({
-    'year':this.current_year,
-    'transaction_id':transaction_id,
-    'transaction_no':(this.DATA.TRANSACTIONS.length + 1),
-    'entry_no':(this.DATA.ENTRIES.length + 1),
-    'record_no':(this.DATA.RECORDS.length + 1),
-    'agent':agent_1,
-    'record_type':'DR',
-    'account_class':'liabilities',
-    'account_name':'government bonds',
-    'amount':x
-  });
-  this.DATA.RECORDS.push(record_2);
-
-  // THE ENTRY SUMMARY
   let entry_1 = new Entry({
     'entry_no':(this.DATA.ENTRIES.length+1),
     'agent':agent_1,
-    'DR':[record_1],
-    'CR':[record_2]
+    'DR':[
+      this.ADD_RECORD({
+        'year':'2022',
+        'transaction_id':transaction_id,
+        'agent':agent_1,
+        'record_type':'DR',
+        'account_class':'assets',
+        'account_name':'deposits, government',
+        'amount':x
+      })
+    ],
+    'CR':[
+      this.ADD_RECORD({
+        'year':'2022',
+        'transaction_id':transaction_id,
+        'agent':agent_1,
+        'record_type':'CR',
+        'account_class':'liabilities',
+        'account_name':'government bonds',
+        'amount':x
+      })
+    ]
   });
   this.DATA.ENTRIES.push(entry_1);
-  
-  
-  // THE SECOND ENTRY
 
+
+  // ENTRY 2
   let agent_2 = 'consumers';
-  
-  let record_3 = new Record({
-    'year':this.current_year,
-    'transaction_id':transaction_id,
-    'transaction_no':(this.DATA.TRANSACTIONS.length + 1),
-    'entry_no':(this.DATA.ENTRIES.length + 1),
-    'record_no':(this.DATA.RECORDS.length + 1),
-    'agent':agent_2,
-    'record_type':'DR',
-    'account_class':'assets',
-    'account_name':'government bonds',
-    'amount':x
-  });
-  this.DATA.RECORDS.push(record_3);
-  
-  let record_4 = new Record({
-    'year':this.current_year,
-    'transaction_id':transaction_id,
-    'transaction_no':(this.DATA.TRANSACTIONS.length + 1),
-    'entry_no':(this.DATA.ENTRIES.length + 1),
-    'record_no':(this.DATA.RECORDS.length + 1),
-    'agent':agent_2,
-    'record_type':'CR',
-    'account_class':'assets',
-    'account_name':'deposits',
-    'amount':-x
-  });
-  this.DATA.RECORDS.push(record_4);
-  
-  // THE ENTRY SUMMARY
   let entry_2 = new Entry({
     'entry_no':(this.DATA.ENTRIES.length+1),
     'agent':agent_2,
-    'DR':[record_3],
-    'CR':[record_4]
+    'DR':[
+      this.ADD_RECORD({
+        'year':'2022',
+        'transaction_id':transaction_id,
+        'agent':agent_2,
+        'record_type':'DR',
+        'account_class':'assets',
+        'account_name':'government bonds',
+        'amount':x
+      })
+    ],
+    'CR':[
+      this.ADD_RECORD({
+        'year':'2022',
+        'transaction_id':transaction_id,
+        'agent':agent_2,
+        'record_type':'CR',
+        'account_class':'assets',
+        'account_name':'deposits, consumers',
+        'amount':-x
+      })
+    ]
   });
   this.DATA.ENTRIES.push(entry_2);
+  
+
+  // ENTRY 3
+  let agent_3 = 'commercial_banks';
+  let entry_3 = new Entry({
+    'entry_no':(this.DATA.ENTRIES.length+1),
+    'agent':agent_3,
+    'DR':[
+      this.ADD_RECORD({
+        'year':'2022',
+        'transaction_id':transaction_id,
+        'agent':agent_3,
+        'record_type':'DR',
+        'account_class':'liabilities',
+        'account_name':'deposits, consumers',
+        'amount':-x
+      })
+    ],
+    'CR':[
+      this.ADD_RECORD({
+        'year':'2022',
+        'transaction_id':transaction_id,
+        'agent':agent_3,
+        'record_type':'CR',
+        'account_class':'liabilities',
+        'account_name':'deposits, government',
+        'amount':x
+      })
+    ]
+  });
+  this.DATA.ENTRIES.push(entry_3);
 
   // THE TRANSACTION SUMMARY
   let transaction_1 = new Transaction({
     'transaction_no':(this.DATA.TRANSACTIONS.length + 1),
-    'entries':[entry_1, entry_2]
+    'transaction_id':transaction_id,
+    'desc':(obj.desc || transaction_desc),
+    'entries':[entry_1, entry_2, entry_3]
   });
   this.DATA.TRANSACTIONS.push(transaction_1);
 

@@ -1,5 +1,7 @@
-Economy.prototype.consumer_borrows_from_commercial_bank = function(x) {
+Economy.prototype.consumer_borrows_from_commercial_bank = function(obj) {
   
+  let x = obj.x; // THE MINIMUM THIS FUNCTION ACCEPTS AS A PARAMETER
+
   let year = '2022';
   let transaction_id = "006";
   let transaction_desc = 'consumers borrow from commercial banks';
@@ -16,7 +18,7 @@ Economy.prototype.consumer_borrows_from_commercial_bank = function(x) {
         'agent':agent_1,
         'record_type':'DR',
         'account_class':'assets',
-        'account_name':'loans',
+        'account_name':'loans, consumers',
         'amount':x
       })
     ],
@@ -27,7 +29,7 @@ Economy.prototype.consumer_borrows_from_commercial_bank = function(x) {
         'agent':agent_1,
         'record_type':'CR',
         'account_class':'liabilities',
-        'account_name':'deposits',
+        'account_name':'deposits, consumer loans',
         'amount':x
       })
     ]
@@ -46,7 +48,7 @@ Economy.prototype.consumer_borrows_from_commercial_bank = function(x) {
         'agent':agent_2,
         'record_type':'DR',
         'account_class':'assets',
-        'account_name':'deposits',
+        'account_name':'deposits, consumer loans',
         'amount':x
       })
     ],
@@ -67,6 +69,8 @@ Economy.prototype.consumer_borrows_from_commercial_bank = function(x) {
   // THE TRANSACTION SUMMARY
   let transaction_1 = new Transaction({
     'transaction_no':(this.DATA.TRANSACTIONS.length + 1),
+    'transaction_id':transaction_id,
+    'desc':(obj.desc || transaction_desc),
     'entries':[entry_1, entry_2]
   });
   this.DATA.TRANSACTIONS.push(transaction_1);

@@ -31,9 +31,30 @@ let summary_table_container;
     });
     
     // THE TRIO
-    e1.government_issues_government_bonds(1475);
-    e1.central_bank_buys_bonds(1324);
-    e1.consumer_borrows_from_commercial_bank(7000);
+    
+    // THE GOVERNMENT ISSUES GOVERNMENT BONDS
+    e1.government_issues_government_bonds({
+      "x":1475,
+      "desc":"<h4> the government creates and sells bonds </h4><p> commercial banks are an intermediary </p>"
+    });
+    
+    // THE CENTRAL BANK INCREASES ITS RESERVES
+    e1.central_bank_increases_reserves({
+      "x":1324,
+      "desc":"<h4> omo, part 1 </h4><p> the central bank increases its reserves </p><p> this is like, the central bank owes the commercial bank x </p><p> and the commercial bank owes the central bank x </p>"
+    });
+    
+    // THE CENTRAL BANK BUYS BONDS FROM CONSUMERS, USING THE COMMERCIAL BANK AS AN INTERMEDIARY
+    e1.central_bank_buys_bonds({
+      "x":1324,
+      "desc":"<h4> omo, part 2 </h4><p> the central bank buys government bonds from consumers </p><p> commercial banks are the intermediary </p>"
+    });
+
+    // CONSUMERS TAKE OUT LOANS
+    e1.consumer_borrows_from_commercial_bank({
+      "x":2124,
+      "desc":"<h4> consumers take out loans </h4><p> they borrow money from the commercial bank </p>"
+    });
     
     // END OF THE TRANSACTIONS
     
